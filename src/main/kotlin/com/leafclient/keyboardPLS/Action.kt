@@ -12,7 +12,6 @@ abstract class ButtonAction(
 
     init {
         checkIfIdentifiable()
-        registry[identifier] = this
     }
 
     abstract operator fun invoke(details: String)
@@ -21,10 +20,19 @@ abstract class ButtonAction(
         private val registry = mutableMapOf<String, ButtonAction>()
 
         operator fun get(identifier: String) = registry[identifier]
+        operator fun plusAssign(action: ButtonAction) {
+            registry[action.identifier] = action
+        }
+        operator fun plusAssign(actions: List<ButtonAction>) {
+            registry.putAll(actions.associateBy { it.identifier })
+        }
     }
 
 }
 
+/**
+ * Creates a new [ButtonAction] instance with provided information.
+ */
 inline fun createButtonAction(
     identifier: String,
     description: String = Descriptions.UNPROVIDED,

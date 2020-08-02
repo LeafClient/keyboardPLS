@@ -1,11 +1,11 @@
 plugins {
     java
-    kotlin("jvm") version "1.4-M2"
+    kotlin("jvm") version "1.4.0-rc"
     `maven-publish`
 }
 
 group = "com.leafclient"
-version = "1.1.0"
+version = "1.1.1"
 
 repositories {
     maven("https://dl.bintray.com/kotlin/kotlin-eap")

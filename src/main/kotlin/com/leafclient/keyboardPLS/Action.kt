@@ -15,6 +15,14 @@ abstract class ButtonAction(
         ButtonAction += this
     }
 
+    /**
+     * Returns the [possibilities] of details for this action.
+     */
+    abstract val possibilities: List<String>
+
+    /**
+     * Method invoked when the action is used.
+     */
     abstract operator fun invoke(details: String)
 
     companion object {
@@ -29,15 +37,4 @@ abstract class ButtonAction(
         }
     }
 
-}
-
-/**
- * Creates a new [ButtonAction] instance with provided information.
- */
-inline fun createButtonAction(
-    identifier: String,
-    description: String = Descriptions.UNPROVIDED,
-    crossinline action: (details: String) -> Unit
-) = object: ButtonAction(identifier, description) {
-    override fun invoke(details: String) = action(details)
 }

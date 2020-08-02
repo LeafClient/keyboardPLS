@@ -12,6 +12,7 @@ abstract class ButtonAction(
 
     init {
         checkIfIdentifiable()
+        ButtonAction += this
     }
 
     abstract operator fun invoke(details: String)

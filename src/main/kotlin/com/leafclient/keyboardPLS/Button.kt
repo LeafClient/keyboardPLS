@@ -23,4 +23,23 @@ abstract class Button<K: Any>(val key: K): Identifiable {
     val pressureDuration: Duration
         get() = if(pressInstant == -1L) Duration.ZERO else Duration.ofMillis(System.currentTimeMillis() - pressInstant)
 
+    /**
+     * Adds [action] with [details] to the pressure actions
+     */
+    fun press(action: String, details: String) = actions.press(action, details)
+
+    /**
+     * Adds [action] with [details] to the pressure actions
+     */
+    fun press(action: ButtonAction, details: String) = actions.press(action, details)
+
+    /**
+     * Adds [action] with [details] to the release actions
+     */
+    fun release(action: String, details: String) = actions.release(action, details)
+    /**
+     * Adds [action] with [details] to the release actions
+     */
+    fun release(action: ButtonAction, details: String) = actions.release(action, details)
+
 }
